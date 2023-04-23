@@ -30,9 +30,12 @@ mongoose
 // MIDDLEWARE
 app.use(express.json());
 app.use(cors());
-app.use("/uploaded-files", express.static("uploaded-files"));
 
 // ROUTES
+app.get("/", (req, res) => {
+  res.sendStatus(200);
+});
+app.use("/uploaded-files", express.static("uploaded-files"));
 app.use("/api/comment", commentsEndpoint);
 app.use("/api/customer", customersEndpoint);
 app.use("/api/internalUser", internalUsersEndpoint);
